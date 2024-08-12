@@ -1,9 +1,10 @@
-const router = require('express').Router();
-const Model = require('../../models/Book');
+const router = require("express").Router() 
+const Model = require("../../models/User")
+
 
 router.get("/", async (req, res) => {
   try {
-    const response = await Model.find({})
+    const response = await Model.findAll({})
     res.json({ status: "success", payload: response })
   } catch(err){
     res.status(500).json({ status: "error", payload: err.message })
@@ -49,5 +50,6 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ status: "error", payload: err.message })
   }
 })
+
 
 module.exports = router;
